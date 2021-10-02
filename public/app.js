@@ -7,19 +7,24 @@ const span = document.querySelector(".coordinates");
 
 var map = L.map("map", {
   center: [0, 0],
+  maxBounds : [[-90,-200],[90,200]],
   noWrap: true,
-  dragging: false,
+  dragging: true,
   zoom: 1,
   maxZoom: 6,
   minZoom: 1,
   zoomControl: false,
-  keyboard: false,
+  keyboard: false
 });
 
-map.fitBounds([
-  [-90, -180],
-  [90, 180],
-]); // dont know if this line works
+map.fitWorld();
+
+
+// map.fitBounds([
+//   [-90, -180],
+//   [90, 180],
+// ]); 
+// dont know if this line works
 
 //Adding ThunderForest Tile Layer
 
@@ -33,12 +38,12 @@ L.tileLayer(
 const myIcon = L.icon({
   iconUrl:
     "https://upload.wikimedia.org/wikipedia/commons/d/d0/International_Space_Station.svg",
-  iconSize: [49, 95],
-  iconAnchor: [22, 94],
+  iconSize: [30, 35],
+  iconAnchor: [10, 10],
 });
 
 // false means api calling
-//true means no api calling
+//true means not api calling
 
 let situation = false; // current sitaution of button
 
@@ -68,11 +73,12 @@ async function tracker() {
 function updateDisp() {
   tracker()
     .then((data) => {
-      span.innerText = `Latitude is:  ${data.latitude} , Longitude is:  ${data.longitude}`;
+      span.innerText = `Latitude is:  ${data.latitude} , Longitude is:  ${data.longitude} , Velocity is: ${data.velocity} km/hr`;
       startStop.insertAdjacentElement("beforebegin", span);
       let x = data.latitude;
       let y = data.longitude;
       addMarker(x, y);
+      console.log(map.getBounds());
     })
     .catch((e) => {
       console.log(e);
@@ -80,6 +86,6 @@ function updateDisp() {
 }
 
 function addMarker(x, y) {
-  let marker = L.marker([x, y], { icon: myIcon }).addTo(map);
+  let marker = L.marker([x, y],{icon:myIcon}).addTo(map);
   setTimeout(() => map.removeLayer(marker), 3100);
 }

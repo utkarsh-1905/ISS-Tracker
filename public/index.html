@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://freesvg.org/img/2fcce003.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css"
+    />
+
+    <!-- LeafletJs Cdn -->
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <title>ISS Tracker</title>
+  </head>
+  <body class="container has-text-centered">
+    <h2 class="title is-1 has-text-centered mt-1">ISS Tracker</h2>
+    <p class="coordinates mb-4"></p>
+    <button class="startStop button is-success is-normal is-rounded mt-2">
+      Start Tracking
+    </button>
+    <div class="is-flex is-flex-direction-row is-justify-content-center">
+      <div id="map" class="mt-6 mb-6 has-text-centered"></div>
+    </div>
+    <footer class="mb-4">
+      <p>Made By : Utkarsh Tripathi</p>
+      <a href="www.github.com/utkarsh-1905"
+        ><img
+          src="https://camo.githubusercontent.com/b079fe922f00c4b86f1b724fbc2e8141c468794ce8adbc9b7456e5e1ad09c622/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f6769746875622e737667"
+          alt="Github"
+      /></a>
+      <a href="https://www.linkedin.com/in/utkarsh-tripathi-80a0ab192"
+        ><img
+          src="https://camo.githubusercontent.com/c8a9c5b414cd812ad6a97a46c29af67239ddaeae08c41724ff7d945fb4c047e5/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f6c696e6b6564696e2e737667"
+          alt="LinkedIn"
+      /></a>
+    </footer>
+    <style>
+      #map {
+        height: 75vh;
+        width: 43vw;
+      }
+      p {
+        text-align: center;
+      }
+      img {
+        display: inline-block;
+        width: 25px;
+        height: auto;
+      }
+      @media (max-width: 500px) {
+        #map {
+          width: 85vw;
+        }
+      }
+    </style>
+    <script>
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAh592fR-ytD-jHRo57-Gu7zGf6XV8fNy8",
+        authDomain: "iss-tracker-a6183.firebaseapp.com",
+        projectId: "iss-tracker-a6183",
+        storageBucket: "iss-tracker-a6183.appspot.com",
+        messagingSenderId: "644209376825",
+        appId: "1:644209376825:web:1e0c73276023c3f3fb57e8",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>
