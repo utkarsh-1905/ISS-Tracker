@@ -7,8 +7,19 @@ const span = document.querySelector(".coordinates");
 
 var map = L.map("map", {
   center: [0, 0],
+  noWrap: true,
+  dragging: false,
   zoom: 1,
+  maxZoom: 6,
+  minZoom: 1,
+  zoomControl: false,
+  keyboard: false,
 });
+
+map.fitBounds([
+  [-90, -180],
+  [90, 180],
+]); // dont know if this line works
 
 //Adding ThunderForest Tile Layer
 
@@ -20,9 +31,10 @@ L.tileLayer(
 //Copied From Docs
 
 const myIcon = L.icon({
-    iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/International_Space_Station.svg',
-    iconSize: [49, 95],
-    iconAnchor: [22, 94]
+  iconUrl:
+    "https://upload.wikimedia.org/wikipedia/commons/d/d0/International_Space_Station.svg",
+  iconSize: [49, 95],
+  iconAnchor: [22, 94],
 });
 
 // false means api calling
@@ -68,6 +80,6 @@ function updateDisp() {
 }
 
 function addMarker(x, y) {
-  let marker = L.marker([x, y],{icon:myIcon}).addTo(map);
+  let marker = L.marker([x, y], { icon: myIcon }).addTo(map);
   setTimeout(() => map.removeLayer(marker), 3100);
 }
