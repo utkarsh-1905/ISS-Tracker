@@ -2,6 +2,7 @@
 
 const startStop = document.querySelector(".startStop");
 const span = document.querySelector(".coordinates");
+const del = document.querySelector(".del");
 
 //Initializing Leaflet
 
@@ -49,6 +50,13 @@ let situation = false; // current sitaution of button
 
 startStop.addEventListener("click", (e) => {
   //   console.log(situation);
+  if(span.innerText===""){
+    del.style.display = "block";
+    setTimeout(()=>{
+      del.style.display = "none";
+    },3250)
+  }
+
   if (situation === false) {
     Window.tracking = setInterval(updateDisp, 3200);
     situation = true;
@@ -78,7 +86,7 @@ function updateDisp() {
       let x = data.latitude;
       let y = data.longitude;
       addMarker(x, y);
-      console.log(map.getBounds());
+      // console.log(map.getBounds());
     })
     .catch((e) => {
       console.log(e);

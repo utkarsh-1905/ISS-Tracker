@@ -24,17 +24,18 @@
 
     <title>ISS Tracker</title>
   </head>
-  <body class="container has-text-centered">
-    <h2 class="title is-1 has-text-centered mt-1">ISS Tracker</h2>
+  <body class="has-text-centered">
+    <h2 class="title is-1 has-text-centered pt-1">ISS Tracker</h2>
     <h3 class="subtitle">International Space Station</h3>
     <p class="coordinates mb-4"></p>
     <button class="startStop button is-success is-normal is-rounded mt-2">
       Start Tracking
     </button>
+    <p class="del has-text-centered is-italic has-text-weight-bold pt-2" style="display: none;">Wait...</p>
     <div class="is-flex is-flex-direction-row is-justify-content-center">
       <div id="map" class="mt-6 mb-6 has-text-centered"></div>
     </div>
-    <footer class="mb-4">
+    <footer class="pb-4">
       <p>Made By : Utkarsh Tripathi</p>
       <a href="https://github.com/utkarsh-1905/ISS-Tracker.git" target="_blank"
         ><img
@@ -48,9 +49,15 @@
       /></a>
     </footer>
     <style>
+      body{
+        width: 100%;
+        background-color: #A9A9A9;
+      }
       #map {
         height: 75vh;
         width: 43vw;
+        border: 1px solid transparent;
+        border-radius: 15px;
       }
       p {
         text-align: center;
